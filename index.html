@@ -1,43 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Purdue Indoor Virtual Tour</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css" />
 
   <!-- Pannellum 360 viewer -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
+  />
   <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 </head>
+
 <body>
   <div id="container">
+    <!-- === ON-SCREEN DEV PANEL =================================== -->
+    <div id="onscreen-dev">
+      <div class="dev-title">Dev Panel</div>
 
-    <!-- Left: Map panel -->
-    <div id="map-panel">
-      <img id="map-image" src="floorplan(edited)/floor0.png" alt="Floor Map">
-      <!-- Spots are injected by script.js -->
+      <div class="dev-section">
+        <div id="dev-current-node">Node: —</div>
+        <div id="dev-view">Yaw: 0 | Pitch: 0</div>
+      </div>
+
+      <button id="dev-btn-default">Save DEFAULT_ORIENTATION</button>
+
+      <div class="dev-section">
+        <label>Neighbor:</label>
+        <select id="dev-neighbor-select"></select>
+        <button id="dev-btn-edge">Save EDGE_VIEW</button>
+        <button id="dev-btn-icon">Save ICON_YAW/PITCH</button>
+      </div>
+
+      <div class="dev-section">
+        <label>Direction for EXTRA_LINK:</label>
+        <select id="dev-direction-select">
+          <option value="forward">forward</option>
+          <option value="back">back</option>
+          <option value="left">left</option>
+          <option value="right">right</option>
+        </select>
+        <button id="dev-btn-extra">Save EXTRA_LINK</button>
+      </div>
+
+      <button id="dev-btn-map">Save mapTop / mapLeft</button>
+
+      <div class="dev-output">
+        <textarea id="dev-output-box" readonly></textarea>
+      </div>
     </div>
 
-    <!-- Right: Viewer panel -->
+    <!-- === MAIN VIEWER (Street-View style) ======================= -->
     <div id="viewer-panel">
+      <!-- Title pill (top-left) -->
       <div id="viewer-header">
         <h1 id="location-title">Select a location on the map</h1>
       </div>
 
+      <!-- 360 pano -->
       <div id="viewer">
-        <!-- 360 pano shown here -->
-        <div id="panorama" style="width: 100%; height: 100%;"></div>
+        <div id="panorama"></div>
+        <div id="pano-transition"></div>
       </div>
 
+      <!-- Info + neighbor nav (bottom center) -->
       <div id="viewer-info">
         <p id="location-description"></p>
         <div id="neighbor-buttons"></div>
       </div>
+
+      <!-- Right-side controls: compass + floor selector -->
+      <div id="controls-right">
+        <div id="compass-widget">
+          <div class="compass-ring"></div>
+          <div class="compass-needle"></div>
+          <div class="compass-center-dot"></div>
+        </div>
+
+        <div id="floor-selector">
+          <!-- Only floor 0 for now -->
+          <button class="floor-btn active" data-floor="0">0</button>
+        </div>
+      </div>
     </div>
 
+    <!-- Floating minimap (bottom-left) -->
+    <div id="map-panel">
+      <img id="map-image" src="floorplan(edited)/floor0.png" alt="Floor Map" />
+      <!-- map-spot buttons are injected by script.js -->
+    </div>
   </div>
 
+  <script src="nodes.js"></script>
   <script src="script.js"></script>
+
+  <!-- yaw / pitch debug overlay -->
+  <div id="debug-orient"></div>
 </body>
 </html>
