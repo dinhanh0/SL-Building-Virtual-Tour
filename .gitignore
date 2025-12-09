@@ -1,0 +1,10 @@
+# Ignore cleanup folder
+images(cleanup)/
+
+# Ignore misc folder
+misc/
+
+SLFloors/SLFloor0
+SLFloors/SLFloor1
+SLFloors/SLFloor2
+SLFloors/SLFloor3
