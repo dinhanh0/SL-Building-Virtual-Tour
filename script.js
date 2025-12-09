@@ -19,11 +19,11 @@ let devAwaitMapClick = false;
 
 // ---- 3. INITIALIZATION ------------------------------------------
 window.addEventListener("load", () => {
-  mapPanel = document.getElementById("map-panel");
-  titleEl = document.getElementById("location-title");
-  descEl = document.getElementById("location-description");
+  mapPanel          = document.getElementById("map-panel");
+  titleEl           = document.getElementById("location-title");
+  descEl            = document.getElementById("location-description");
   neighborContainer = document.getElementById("neighbor-buttons");
-  compassNeedleEl = document.querySelector(".compass-needle");
+  compassNeedleEl   = document.querySelector(".compass-needle");
 
   setupIdleMinimap();
   setupCompassClick();
@@ -43,13 +43,14 @@ window.addEventListener("load", () => {
   if (!startNodeId || !nodes[startNodeId]) {
     startNodeId = "n1";  // fallback
   }
+
   if (!nodes[startNodeId]) {
     console.error("Start node not found in nodes.js");
     return;
   }
 
   createMapSpots();
-  goToNode(startNodeId);   // uses node.defaultYaw/defaultPitch
+  goToNode(startNodeId);   // no override → uses node.defaultYaw/defaultPitch
   startCompassTracking();
   setupYawPitchDebug();
   setupDevOverlay();
@@ -57,6 +58,7 @@ window.addEventListener("load", () => {
   // start live overlay updates
   setInterval(updateDevPanel, 100);
 });
+
 
 // ---- 4. CREATE MAP SPOTS ----------------------------------------
 function createMapSpots() {
@@ -66,6 +68,9 @@ function createMapSpots() {
   oldSpots.forEach(s => s.remove());
 
   Object.entries(nodes).forEach(([id, node]) => {
+    // 👈 NEW: if this node is marked hidden, don't make a dot
+    if (node.hideOnMap === true) return;
+
     const spot = document.createElement("button");
     spot.className = "map-spot";
     spot.style.top = node.mapTop + "%";
@@ -73,15 +78,16 @@ function createMapSpots() {
     spot.title = node.label;
     spot.dataset.nodeId = id;
 
-    // clicking a dot moves to that node, not toggle expand
+    // clicking a dot should move to that node, not toggle map expand
     spot.addEventListener("click", (e) => {
       e.stopPropagation();
-      goToNode(id);
+      goToNode(id);  // map uses defaultYaw/defaultPitch
     });
 
     mapPanel.appendChild(spot);
   });
 }
+
 
 // ---- 5. MAIN NAVIGATION FUNCTION -------------------------------
 // overrideYaw / overridePitch are optional; used for direction-specific views.
@@ -101,21 +107,21 @@ function goToNode(id, overrideYaw, overridePitch) {
   // Build hotspots to neighbors for this pano
   const hotSpots = (node.neighbors || [])
     .map(neighbor => {
-      const neighborId = neighbor.id;
+      const neighborId   = neighbor.id;
       const neighborNode = nodes[neighborId];
       if (!neighborNode) return null;
 
       return {
         pitch: neighbor.pitch ?? 0,
-        yaw: neighbor.yaw ?? 0,
-        type: "info",
-        text: "Go to: " + neighborNode.label,
+        yaw:   neighbor.yaw   ?? 0,
+        type:  "info",
+        text:  "Go to: " + neighborNode.label,
 
-        // If neighbor has viewYaw/viewPitch, use them as overrides
+        // If neighbor has viewYaw/viewPitch, use them as overrides when clicked
         clickHandlerFunc: () =>
           goToNode(
             neighborId,
-            (typeof neighbor.viewYaw === "number") ? neighbor.viewYaw : undefined,
+            (typeof neighbor.viewYaw  === "number") ? neighbor.viewYaw  : undefined,
             (typeof neighbor.viewPitch === "number") ? neighbor.viewPitch : undefined
           )
       };
@@ -153,12 +159,12 @@ function goToNode(id, overrideYaw, overridePitch) {
   }
 
   titleEl.textContent = node.label;
-  descEl.textContent = node.description || "";
+  descEl.textContent  = node.description || "";
 
   // Neighbor buttons under the viewer
   neighborContainer.innerHTML = "";
   (node.neighbors || []).forEach(neighbor => {
-    const neighborId = neighbor.id;
+    const neighborId   = neighbor.id;
     const neighborNode = nodes[neighborId];
     if (!neighborNode) return;
 
@@ -169,7 +175,7 @@ function goToNode(id, overrideYaw, overridePitch) {
     btn.addEventListener("click", () =>
       goToNode(
         neighborId,
-        (typeof neighbor.viewYaw === "number") ? neighbor.viewYaw : undefined,
+        (typeof neighbor.viewYaw  === "number") ? neighbor.viewYaw  : undefined,
         (typeof neighbor.viewPitch === "number") ? neighbor.viewPitch : undefined
       )
     );
@@ -179,6 +185,7 @@ function goToNode(id, overrideYaw, overridePitch) {
 
   highlightActiveSpot(id);
 }
+
 
 // ---- 6. MAP SPOT HIGHLIGHTING ----------------------------------
 function highlightActiveSpot(activeId) {
@@ -192,6 +199,7 @@ function highlightActiveSpot(activeId) {
     }
   });
 }
+
 
 // ---- 7. COMPASS TRACKING & CLICK TO RECENTER -------------------
 function startCompassTracking() {
@@ -220,6 +228,7 @@ function setupCompassClick() {
     panoViewer.setPitch(0);
   });
 }
+
 
 // ---- 8. MINIMAP IDLE DIMMING + EXPAND/SHRINK -------------------
 function setupIdleMinimap() {
@@ -254,12 +263,13 @@ function setupMapInteractions() {
   mapPanel.addEventListener("click", (e) => {
     // if dev "waiting for map click", capture mapTop/mapLeft instead
     if (DEV_MODE && devAwaitMapClick && currentNodeId) {
-      const rect = mapPanel.getBoundingClientRect();
-      const topPct = ((e.clientY - rect.top) / rect.height) * 100;
-      const leftPct = ((e.clientX - rect.left) / rect.width) * 100;
+      const rect   = mapPanel.getBoundingClientRect();
+      const topPct = ((e.clientY - rect.top)  / rect.height) * 100;
+      const leftPct = ((e.clientX - rect.left) / rect.width)  * 100;
 
+      // Python-ready snippet for MAP_POSITIONS
       devLog(
-        `"${currentNodeId}": mapTop=${topPct.toFixed(1)}, mapLeft=${leftPct.toFixed(1)}`
+        `"${currentNodeId}": (${topPct.toFixed(1)}, ${leftPct.toFixed(1)}),`
       );
       devAwaitMapClick = false;
       return; // don't toggle expand
@@ -287,9 +297,10 @@ function toggleMapExpanded() {
   }
 }
 
+
 // ---- 9. YAW / PITCH DEBUG (cursor-based) ------------------------
 function setupYawPitchDebug() {
-  const dbg = document.getElementById("debug-orient");
+  const dbg     = document.getElementById("debug-orient");
   const panoDiv = document.getElementById("panorama");
   if (!dbg || !panoDiv) return;
 
@@ -300,7 +311,7 @@ function setupYawPitchDebug() {
     if (!coords) return;
 
     const [pitch, yaw] = coords;
-    const viewYaw = panoViewer.getYaw();
+    const viewYaw   = panoViewer.getYaw();
     const viewPitch = panoViewer.getPitch();
 
     dbg.textContent =
@@ -308,6 +319,7 @@ function setupYawPitchDebug() {
       `| Cursor Yaw: ${yaw.toFixed(1)}, Pitch: ${pitch.toFixed(1)}`;
   });
 }
+
 
 // ---- 10. ON-SCREEN DEV OVERLAY ---------------------------------
 function setupDevOverlay() {
@@ -322,86 +334,89 @@ function setupDevOverlay() {
   const btnIcon      = document.getElementById("dev-btn-icon");
   const btnExtra     = document.getElementById("dev-btn-extra");
   const btnMap       = document.getElementById("dev-btn-map");
+  const neighborSel  = document.getElementById("dev-neighbor-select");
+  const extraDirSel  = document.getElementById("dev-extra-dir");
 
-  // DEFAULT_ORIENTATIONS for a node
+  // DEFAULT_ORIENTATIONS
   if (btnDefault) {
     btnDefault.onclick = () => {
       if (!panoViewer || !currentNodeId) return;
-      const yaw = panoViewer.getYaw().toFixed(1);
+      const yaw   = panoViewer.getYaw().toFixed(1);
       const pitch = panoViewer.getPitch().toFixed(1);
-      devLog(`"${currentNodeId}": (${yaw}, ${pitch}),  // DEFAULT_ORIENTATIONS`);
+      devLog(`# DEFAULT_ORIENTATIONS\n"${currentNodeId}": (${yaw}, ${pitch}),`);
     };
   }
 
-  // EDGE_VIEW_ORIENTATIONS (arrival view for going from node -> neighbor)
+  // EDGE_VIEW_ORIENTATIONS (arrival camera orientation)
   if (btnEdge) {
     btnEdge.onclick = () => {
-      if (!panoViewer || !currentNodeId) return;
-      const select = document.getElementById("dev-neighbor-select");
-      const toNode = select ? select.value : null;
+      if (!panoViewer || !currentNodeId || !neighborSel) return;
+      const toNode = neighborSel.value;
       if (!toNode) return;
 
-      const yaw = panoViewer.getYaw().toFixed(1);
+      const yaw   = panoViewer.getYaw().toFixed(1);
       const pitch = panoViewer.getPitch().toFixed(1);
-      devLog(`("${currentNodeId}", "${toNode}"): (${yaw}, ${pitch}),  // EDGE_VIEW_ORIENTATIONS`);
-    };
-  }
-
-  // NEIGHBOR_YAWS (icon yaw + pitch for edge from node -> neighbor)
-  if (btnIcon) {
-    btnIcon.onclick = () => {
-      if (!panoViewer || !currentNodeId) return;
-      const select = document.getElementById("dev-neighbor-select");
-      const toNode = select ? select.value : null;
-      if (!toNode) return;
-
-      const yaw = panoViewer.getYaw().toFixed(1);
-      const pitch = panoViewer.getPitch().toFixed(1);
-      devLog(`("${currentNodeId}", "${toNode}"): (${yaw}, ${pitch}),  // NEIGHBOR_YAWS`);
-    };
-  }
-
-  // EXTRA_LINKS (third directions / shortcuts)
-  if (btnExtra) {
-    btnExtra.onclick = () => {
-      if (!panoViewer || !currentNodeId) return;
-
-      const neighborSel  = document.getElementById("dev-neighbor-select");
-      const dirSel       = document.getElementById("dev-direction-select");
-
-      const toNode    = neighborSel ? neighborSel.value : null;
-      const direction = dirSel ? dirSel.value : "forward";
-      if (!toNode) return;
-
-      const yaw = panoViewer.getYaw().toFixed(1);
-      const pitch = panoViewer.getPitch().toFixed(1);
-
       devLog(
-        `("${currentNodeId}", "${toNode}", "${direction}", ${yaw}, ${pitch}),  // EXTRA_LINKS`
+        `# EDGE_VIEW_ORIENTATIONS\n("${currentNodeId}", "${toNode}"): (${yaw}, ${pitch}),`
       );
     };
   }
 
+  // NEIGHBOR_YAWS (icon yaw/pitch hotspot)
+  if (btnIcon) {
+    btnIcon.onclick = () => {
+      if (!panoViewer || !currentNodeId || !neighborSel) return;
+      const toNode = neighborSel.value;
+      if (!toNode) return;
+
+      const yaw   = panoViewer.getYaw().toFixed(1);
+      const pitch = panoViewer.getPitch().toFixed(1);
+      devLog(
+        `# NEIGHBOR_YAWS\n("${currentNodeId}", "${toNode}"): (${yaw}, ${pitch}),`
+      );
+    };
+  }
+
+  // EXTRA_LINKS (third directions / shortcuts) with viewYaw/viewPitch
+  if (btnExtra) {
+    btnExtra.onclick = () => {
+      if (!panoViewer || !currentNodeId || !neighborSel || !extraDirSel) return;
+      const toNode    = neighborSel.value;
+      const direction = extraDirSel.value;
+      if (!toNode || !direction) return;
+
+      const yaw   = panoViewer.getYaw().toFixed(1);
+      const pitch = panoViewer.getPitch().toFixed(1);
+
+      devLog(
+        `# EXTRA_LINKS\n("${currentNodeId}", "${toNode}", "${direction}", ${yaw}, ${pitch}),`
+      );
+    };
+  }
+
+  // MAP_POSITIONS (mapTop/mapLeft)
   if (btnMap) {
     btnMap.onclick = () => {
       if (!mapPanel || !currentNodeId) return;
       devAwaitMapClick = true;
-      devLog("Click on the minimap to record mapTop/mapLeft.");
+      devLog("# MAP_POSITIONS\nClick on the minimap to record mapTop/mapLeft.");
     };
   }
 }
 
+// Dev output helper
 function devLog(text) {
   const box = document.getElementById("dev-output-box");
   if (!box) return;
   box.value = text;
 }
 
+// Live dev panel info (node, yaw/pitch, neighbor list)
 function updateDevPanel() {
   if (!DEV_MODE) return;
   if (!panoViewer || !currentNodeId) return;
 
-  const yaw = panoViewer.getYaw().toFixed(1);
+  const yaw   = panoViewer.getYaw().toFixed(1);
   const pitch = panoViewer.getPitch().toFixed(1);
 
   const nodeLabel = document.getElementById("dev-current-node");
@@ -417,9 +432,10 @@ function updateDevPanel() {
 
   if (select) {
     const previous = select.value; // remember current choice
-    select.innerHTML = "";
 
+    select.innerHTML = "";
     const node = nodes[currentNodeId];
+
     (node.neighbors || []).forEach(n => {
       const opt = document.createElement("option");
       opt.value = n.id;
@@ -427,7 +443,7 @@ function updateDevPanel() {
       select.appendChild(opt);
     });
 
-    // restore previous selection if still valid
+    // try to restore previous selection if it still exists
     if (previous) {
       const options = Array.from(select.options).map(o => o.value);
       if (options.includes(previous)) {
@@ -435,7 +451,7 @@ function updateDevPanel() {
       }
     }
 
-    // default to first option
+    // if nothing selected, default to first option
     if (!select.value && select.options.length > 0) {
       select.value = select.options[0].value;
     }

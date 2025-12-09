@@ -6,14 +6,15 @@ IMAGE_DIR = "SLFloors/SLFloor0"
 OUTPUT_JS = "nodes.js"
 
 YAW_FORWARD = 20
-YAW_BACK = -120
-YAW_LEFT = -90
-YAW_RIGHT = 90
+YAW_BACK    = -120
+YAW_LEFT    = -90
+YAW_RIGHT   = 90
 PITCH_DEFAULT = 0
 
-MAP_TOP_START = 40
+MAP_TOP_START  = 40
 MAP_LEFT_START = 30
-MAP_STEP = 1
+MAP_STEP       = 1
+
 
 # ------------ EXTRA NEIGHBOR LINKS (third directions, shortcuts) ----
 # Format: (from_node, to_node, direction[, view_yaw, view_pitch])
@@ -22,15 +23,13 @@ EXTRA_LINKS = [
     # examples:
     # ("n2", "n25", "left"),
     # ("n25", "n2", "right", 0.0, 0.0),
-    ("n4", "n17","forward"),
+    ("n4",  "n17", "forward"),
+    ("n17", "n4",  "left"),
 
-    ("n17", "n4","left"),
+    ("n5",  "n7",  "forward"),
+    ("n7",  "n5",  "forward"),
 
-    ("n5", "n7", "forward"),
-
-    ("n7", "n5", "forward"),
-
-    ("n10", "n21","forward"),
+    ("n10", "n21", "forward"),
     ("n21", "n10", "forward"),
 
     ("n21", "n12", "forward"),
@@ -45,43 +44,36 @@ EXTRA_LINKS = [
     ("n14", "n16", "forward"),
     ("n16", "n14", "forward"),
 
-    ("n7", "n18", "forward"),
-    ("n18", "n7", "forward"),
+    ("n7",  "n18", "forward"),
+    ("n18", "n7",  "forward"),
 
     ("n21", "n23", "forward"),
     ("n23", "n21", "forward"),
 
     ("n24", "n20", "forward"),
     ("n20", "n24", "forward"),
-
-
-
 ]
 
 DIR_TO_YAW = {
     "forward": YAW_FORWARD,
-    "back": YAW_BACK,
-    "left": YAW_LEFT,
-    "right": YAW_RIGHT,
+    "back":    YAW_BACK,
+    "left":    YAW_LEFT,
+    "right":   YAW_RIGHT,
 }
 
 # ------------ DEFAULT ORIENTATIONS ----------------------------------
 # Add entries like:
 #   "n2": (yaw, pitch)
 DEFAULT_ORIENTATIONS = {
-    # "n2": (178.1, 22.8),
     "n1": (180, 0),
-    #"n2": (-180.0, 0.0),
-    "n3": (180.0, 0.0)
-    
+    # "n2": (178.1, 22.8),
+    "n3": (180.0, 0.0),
 }
 
 # ------------ EDGE VIEW ORIENTATIONS (arrival view per edge) -------
 # Entries like:
 #   ("n3", "n2"): (yaw, pitch)
 EDGE_VIEW_ORIENTATIONS = {
-    # ("n2", "n1"): (-10.6, 11.1),
-    # ("n2", "n3"): (178.1, 22.8),
     ("n1", "n2"): (180, 0),
 
     ("n2", "n1"): (0, 0),
@@ -108,8 +100,6 @@ EDGE_VIEW_ORIENTATIONS = {
 
     ("n10", "n9"): (-100, 0),
     ("n10", "n21"): (-2, 10),
-    
-
 
     ("n12", "n24"): (130, 0),
     ("n12", "n13"): (180, 0),
@@ -117,22 +107,20 @@ EDGE_VIEW_ORIENTATIONS = {
 
     ("n13", "n14"): (180, 0),
 
-
     ("n14", "n15"): (-180, 0),
-
     ("n14", "n16"): (-90, 0),
+
     ("n15", "n14"): (88, 0),
 
     ("n16", "n17"): (180, 0),
 
     ("n17", "n16"): (0, 0),
-    ("n17", "n4"): (-90, 4),
+    ("n17", "n4"):  (-90, 4),
 
-    ("n18", "n7"): (-97, 6),
-    ("n18", "n13"): (-90, 0), 
+    ("n18", "n7"):  (-97, 6),
+    ("n18", "n13"): (-90, 0),
 
     ("n20", "n24"): (40, 2),
-
 
     ("n21", "n12"): (-90, 4),
     ("n21", "n23"): (-40, -2),
@@ -140,17 +128,8 @@ EDGE_VIEW_ORIENTATIONS = {
     ("n22", "n23"): (143, 9),
     ("n23", "n22"): (90, 5),
 
-    ("n24", "n12"): (180,0),
-    ("n24", "n20"): (180,0),
-
-
-
-
-
-
-
-
-    
+    ("n24", "n12"): (180, 0),
+    ("n24", "n20"): (180, 0),
 }
 
 # ------------ ICON YAW / PITCH PER EDGE -----------------------------
@@ -158,17 +137,16 @@ EDGE_VIEW_ORIENTATIONS = {
 # Entries like:
 #   ("n2", "n3"): (yaw, pitch)
 NEIGHBOR_YAWS = {
-    # ("n2", "n3"): (175.0, 0.0),
     ("n1", "n2"): (-178, -22),
 
     ("n2", "n1"): (-12, 26.9),
     ("n2", "n3"): (-180, 0),
 
     ("n3", "n2"): (-1.0, 4),
-    ("n3", "n4"): (178,-8),
+    ("n3", "n4"): (178, -8),
 
-    ("n4", "n3"): (-4,-4),
-    ("n4", "n5"): (177,-8),
+    ("n4", "n3"): (-4, -4),
+    ("n4", "n5"): (177, -8),
     ("n4", "n17"): (88, -5),
 
     ("n5", "n6"): (-65, -2),
@@ -181,7 +159,6 @@ NEIGHBOR_YAWS = {
     ("n7", "n8"): (175, -4),
     ("n7", "n18"): (86, -1),
 
-
     ("n8", "n7"): (-3, 0),
     ("n8", "n9"): (178, -6),
 
@@ -190,55 +167,50 @@ NEIGHBOR_YAWS = {
 
     ("n10", "n9"): (-4, 0),
     ("n10", "n21"): (180, -5),
-     
+
     ("n21", "n10"): (180, -2),
     ("n21", "n12"): (-2, 3),
     ("n21", "n23"): (-78, 2),
 
-
     ("n12", "n21"): (90, -4),
-    ("n12", "n24"): (0.4,0.9),
+    ("n12", "n24"): (0.4, 0.9),
     ("n12", "n13"): (180, -4),
     ("n12", "n14"): (180, -4),
 
     ("n13", "n14"): (176, -4),
     ("n13", "n12"): (-6, 3),
-    ("n13", "n18"): (84,0),
-
+    ("n13", "n18"): (84, 0),
 
     ("n14", "n15"): (-90, 0),
     ("n14", "n13"): (-4, 3),
-    ("n14", "n16"): (180,-4),
-
+    ("n14", "n16"): (180, -4),
 
     ("n15", "n14"): (-2, 5),
 
     ("n16", "n14"): (82, -5),
     ("n16", "n17"): (173, -3),
 
-    ("n17", "n4"): (175, -5), 
-    ("n17", "n16"): (-11, 4), 
+    ("n17", "n4"):  (175, -5),
+    ("n17", "n16"): (-11, 4),
 
-    ("n18", "n7"): (-8, 2), 
-    ("n18", "n19"): (-8, 2), 
-    ("n18", "n13"): (175, -3), 
+    ("n18", "n7"):  (-8, 2),
+    ("n18", "n19"): (-8, 2),
+    ("n18", "n13"): (175, -3),
 
-    ("n19", "n18"): (-8, 2), 
-    ("n20", "n24"): (-100, -25), 
-
+    ("n19", "n18"): (-8, 2),
+    ("n20", "n24"): (-100, -25),
 
     ("n22", "n23"): (-58, -7),
 
     ("n23", "n22"): (-43, 2),
     ("n23", "n21"): (106, -3),
 
-
-    ("n24", "n12"): (-51,-2),
-    ("n24", "n20"): (-156,-27),
-
+    ("n24", "n12"): (-51, -2),
+    ("n24", "n20"): (-156, -27),
 }
+
+# ------------ BLOCKED EDGES -----------------------------------------
 BLOCKED_EDGES = {
-    # ("n7", "n6"),
     ("n6", "n7"),
     ("n7", "n6"),
 
@@ -249,7 +221,7 @@ BLOCKED_EDGES = {
 
     ("n21", "n20"),
     ("n20", "n21"),
-    
+
     ("n24", "n20"),
     ("n20", "n24"),
     ("n20", "n19"),
@@ -265,9 +237,46 @@ BLOCKED_EDGES = {
     ("n16", "n15"),
     ("n17", "n18"),
     ("n18", "n17"),
-
 }
 
+# ------------ MAP POSITIONS (overrides for mapTop/mapLeft) ----------
+# Entries like:
+#   "n7": (top_pct, left_pct),
+MAP_POSITIONS = {
+    "n20": (57.5, 12.2),
+    "n24": (60.8, 12.6),
+
+    "n12": (60.2, 25.4),
+    "n21": (44.5, 25.2),
+    "n10": (31.6, 25.2),
+    "n9": (18.0, 25.9),
+    "n8": (18.6, 35.9),
+    "n7": (18.3, 50.7),
+    "n5": (19.8, 66.7),
+    "n6": (10.0, 64.3),
+    "n4": (19.2, 71.5),
+    "n3": (19.2, 79.4),
+    "n17": (37.8, 71.1),
+    "n16": (60.2, 70.7),
+    "n14": (61.4, 58.1),
+    "n15": (78.2, 59.6),
+    "n13": (61.1, 50.7),
+    "n22": (39.5, 32.8),
+    "n23": (39.2, 30.2),
+    "n18": (42.8, 50.7),
+    "n2": (19.5, 90.4),
+    "n1": (19.5, 95.7),
+    # fill from Dev Panel output, e.g.
+    # "n7": (45.2, 37.8),
+}
+
+#------------ NODES HIDDEN FROM MINIMAP -----------------------------
+# Nodes here will NOT get a dot on the map, but are still valid nodes.
+HIDDEN_NODES = {
+    # "n7",
+    "n19",
+    "n11"
+}
 
 
 # ====================================================================
@@ -296,27 +305,42 @@ def main():
             back_id = f"n{i-1}"
             # skip if blocked
             if (node_id, back_id) not in BLOCKED_EDGES:
-                yaw_back = YAW_BACK
+                yaw_back   = YAW_BACK
                 pitch_back = PITCH_DEFAULT
-                pair_back = (node_id, back_id)
+                pair_back  = (node_id, back_id)
                 if pair_back in NEIGHBOR_YAWS:
                     yaw_back, pitch_back = NEIGHBOR_YAWS[pair_back]
-                neighbors.append({"id": back_id, "yaw": yaw_back, "pitch": pitch_back})
+                neighbors.append({
+                    "id": back_id,
+                    "yaw": yaw_back,
+                    "pitch": pitch_back
+                })
 
         # ---- forward neighbor (i+1) ----
         if i < len(files):
             fwd_id = f"n{i+1}"
             # skip if blocked
             if (node_id, fwd_id) not in BLOCKED_EDGES:
-                yaw_fwd = YAW_FORWARD
+                yaw_fwd   = YAW_FORWARD
                 pitch_fwd = PITCH_DEFAULT
-                pair_fwd = (node_id, fwd_id)
+                pair_fwd  = (node_id, fwd_id)
                 if pair_fwd in NEIGHBOR_YAWS:
                     yaw_fwd, pitch_fwd = NEIGHBOR_YAWS[pair_fwd]
-                neighbors.append({"id": fwd_id, "yaw": yaw_fwd, "pitch": pitch_fwd})
+                neighbors.append({
+                    "id": fwd_id,
+                    "yaw": yaw_fwd,
+                    "pitch": pitch_fwd
+                })
 
-        map_top = min(100, MAP_TOP_START + (i - 1) * MAP_STEP)
-        map_left = min(100, MAP_LEFT_START + (i - 1) * MAP_STEP)
+        # Default automatic path-based position
+        auto_top  = min(100, MAP_TOP_START  + (i - 1) * MAP_STEP)
+        auto_left = min(100, MAP_LEFT_START + (i - 1) * MAP_STEP)
+
+        # Override with MAP_POSITIONS if present
+        if node_id in MAP_POSITIONS:
+            map_top, map_left = MAP_POSITIONS[node_id]
+        else:
+            map_top, map_left = auto_top, auto_left
 
         # Default camera orientation
         default_yaw, default_pitch = DEFAULT_ORIENTATIONS.get(node_id, (0, 0))
@@ -329,7 +353,9 @@ def main():
             "defaultPitch": default_pitch,
             "neighbors": neighbors,
             "mapTop": map_top,
-            "mapLeft": map_left
+            "mapLeft": map_left,
+            "hideOnMap": (node_id in HIDDEN_NODES),   # 👈 NEW
+
         }
 
     # 3. Apply EXTRA_LINKS (including optional view overrides)
@@ -426,7 +452,9 @@ def main():
 {neighbors_block}
     ],
     mapTop: {node["mapTop"]},
-    mapLeft: {node["mapLeft"]}
+    mapLeft: {node["mapLeft"]},
+    hideOnMap: {str(node["hideOnMap"]).lower()}
+
   }}"""
 
             if i < len(files):

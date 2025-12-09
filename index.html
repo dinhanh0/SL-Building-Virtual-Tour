@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Purdue Indoor Virtual Tour</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 
   <!-- Pannellum 360 viewer -->
   <link
@@ -16,7 +16,8 @@
 
 <body>
   <div id="container">
-    <!-- === ON-SCREEN DEV PANEL =================================== -->
+
+    <!-- === ON-SCREEN DEV PANEL (overlay) === -->
     <div id="onscreen-dev">
       <div class="dev-title">Dev Panel</div>
 
@@ -25,34 +26,41 @@
         <div id="dev-view">Yaw: 0 | Pitch: 0</div>
       </div>
 
+      <!-- DEFAULT_ORIENTATIONS -->
       <button id="dev-btn-default">Save DEFAULT_ORIENTATION</button>
 
       <div class="dev-section">
         <label>Neighbor:</label>
         <select id="dev-neighbor-select"></select>
-        <button id="dev-btn-edge">Save EDGE_VIEW</button>
-        <button id="dev-btn-icon">Save ICON_YAW/PITCH</button>
-      </div>
 
-      <div class="dev-section">
-        <label>Direction for EXTRA_LINK:</label>
-        <select id="dev-direction-select">
-          <option value="forward">forward</option>
-          <option value="back">back</option>
-          <option value="left">left</option>
-          <option value="right">right</option>
-        </select>
+        <!-- EDGE_VIEW_ORIENTATIONS -->
+        <button id="dev-btn-edge">Save EDGE_VIEW</button>
+
+        <!-- NEIGHBOR_YAWS -->
+        <button id="dev-btn-icon">Save ICON_YAW</button>
+
+        <!-- EXTRA_LINKS -->
+        <div class="dev-row">
+          <label for="dev-extra-dir" style="color:#ccc;font-size:11px;">Dir:</label>
+          <select id="dev-extra-dir">
+            <option value="forward">forward</option>
+            <option value="back">back</option>
+            <option value="left">left</option>
+            <option value="right">right</option>
+          </select>
+        </div>
         <button id="dev-btn-extra">Save EXTRA_LINK</button>
       </div>
 
-      <button id="dev-btn-map">Save mapTop / mapLeft</button>
+      <!-- MAP_POSITIONS -->
+      <button id="dev-btn-map">Save MAP_POSITION (mapTop/mapLeft)</button>
 
       <div class="dev-output">
         <textarea id="dev-output-box" readonly></textarea>
       </div>
     </div>
 
-    <!-- === MAIN VIEWER (Street-View style) ======================= -->
+    <!-- Main viewer (Street View style) -->
     <div id="viewer-panel">
       <!-- Title pill (top-left) -->
       <div id="viewer-header">
@@ -80,8 +88,10 @@
         </div>
 
         <div id="floor-selector">
-          <!-- Only floor 0 for now -->
           <button class="floor-btn active" data-floor="0">0</button>
+          <!-- future floors:
+          <button class="floor-btn" data-floor="1">1</button>
+          -->
         </div>
       </div>
     </div>
@@ -95,8 +105,6 @@
 
   <script src="nodes.js"></script>
   <script src="script.js"></script>
-
-  <!-- yaw / pitch debug overlay -->
   <div id="debug-orient"></div>
 </body>
 </html>

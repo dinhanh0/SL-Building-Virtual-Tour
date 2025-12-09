@@ -5,41 +5,47 @@ window.NODES = {
     image: "SL0_084.jpg",
     label: "Image 1",
     description: "",
-    defaultYaw: 0,
+    defaultYaw: 180,
     defaultPitch: 0,
     neighbors: [
-      { id: "n2", yaw: 20, pitch: 0 }
+      { id: "n2", yaw: -178, pitch: -22, viewYaw: 180, viewPitch: 0 }
     ],
-    mapTop: 40,
-    mapLeft: 30
+    mapTop: 19.5,
+    mapLeft: 95.7,
+    hideOnMap: false
+
   },
 
   n2: {
     image: "SL0_085.jpg",
     label: "Image 2",
     description: "",
-    defaultYaw: 178.1,
-    defaultPitch: 22.8,
+    defaultYaw: 0,
+    defaultPitch: 0,
     neighbors: [
-      { id: "n1", yaw: -120, pitch: 0, viewYaw: -10.6, viewPitch: 11.1 },
-      { id: "n3", yaw: 20, pitch: 0, viewYaw: 178.1, viewPitch: 22.8 }
+      { id: "n1", yaw: -12, pitch: 26.9, viewYaw: 0, viewPitch: 0 },
+      { id: "n3", yaw: -180, pitch: 0, viewYaw: 180.0, viewPitch: 0 }
     ],
-    mapTop: 41,
-    mapLeft: 31
+    mapTop: 19.5,
+    mapLeft: 90.4,
+    hideOnMap: false
+
   },
 
   n3: {
     image: "SL0_086.jpg",
     label: "Image 3",
     description: "",
-    defaultYaw: 0,
-    defaultPitch: 0,
+    defaultYaw: 180.0,
+    defaultPitch: 0.0,
     neighbors: [
-      { id: "n2", yaw: -120, pitch: 0 },
-      { id: "n4", yaw: 20, pitch: 0 }
+      { id: "n2", yaw: -1.0, pitch: 4, viewYaw: 0, viewPitch: 0 },
+      { id: "n4", yaw: 178, pitch: -8, viewYaw: -180, viewPitch: 0 }
     ],
-    mapTop: 42,
-    mapLeft: 32
+    mapTop: 19.2,
+    mapLeft: 79.4,
+    hideOnMap: false
+
   },
 
   n4: {
@@ -49,11 +55,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n3", yaw: -120, pitch: 0 },
-      { id: "n5", yaw: 20, pitch: 0 }
+      { id: "n3", yaw: -4, pitch: -4, viewYaw: 0, viewPitch: 0 },
+      { id: "n5", yaw: 177, pitch: -8, viewYaw: 180, viewPitch: 0 },
+      { id: "n17", yaw: 88, pitch: -5, viewYaw: -10, viewPitch: 7.6 }
     ],
-    mapTop: 43,
-    mapLeft: 33
+    mapTop: 19.2,
+    mapLeft: 71.5,
+    hideOnMap: false
+
   },
 
   n5: {
@@ -63,11 +72,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n4", yaw: -120, pitch: 0 },
-      { id: "n6", yaw: 20, pitch: 0 }
+      { id: "n4", yaw: -1, pitch: -5 },
+      { id: "n6", yaw: -65, pitch: -2 },
+      { id: "n7", yaw: 180, pitch: -8, viewYaw: 180, viewPitch: 0 }
     ],
-    mapTop: 44,
-    mapLeft: 34
+    mapTop: 19.8,
+    mapLeft: 66.7,
+    hideOnMap: false
+
   },
 
   n6: {
@@ -77,11 +89,12 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n5", yaw: -120, pitch: 0 },
-      { id: "n7", yaw: 20, pitch: 0 }
+      { id: "n5", yaw: -78, pitch: -8, viewYaw: 86, viewPitch: -7.6 }
     ],
-    mapTop: 45,
-    mapLeft: 35
+    mapTop: 10.0,
+    mapLeft: 64.3,
+    hideOnMap: false
+
   },
 
   n7: {
@@ -91,11 +104,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n6", yaw: -120, pitch: 0 },
-      { id: "n8", yaw: 20, pitch: 0 }
+      { id: "n8", yaw: 175, pitch: -4, viewYaw: 180, viewPitch: 0 },
+      { id: "n5", yaw: -5, pitch: -6, viewYaw: -6, viewPitch: -7.6 },
+      { id: "n18", yaw: 86, pitch: -1, viewYaw: 175, viewPitch: 2 }
     ],
-    mapTop: 46,
-    mapLeft: 36
+    mapTop: 18.3,
+    mapLeft: 50.7,
+    hideOnMap: false
+
   },
 
   n8: {
@@ -105,11 +121,13 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n7", yaw: -120, pitch: 0 },
-      { id: "n9", yaw: 20, pitch: 0 }
+      { id: "n7", yaw: -3, pitch: 0 },
+      { id: "n9", yaw: 178, pitch: -6, viewYaw: 178, viewPitch: 0 }
     ],
-    mapTop: 47,
-    mapLeft: 37
+    mapTop: 18.6,
+    mapLeft: 35.9,
+    hideOnMap: false
+
   },
 
   n9: {
@@ -119,11 +137,13 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n8", yaw: -120, pitch: 0 },
-      { id: "n10", yaw: 20, pitch: 0 }
+      { id: "n8", yaw: -6, pitch: -8 },
+      { id: "n10", yaw: 86, pitch: 0, viewYaw: 180, viewPitch: 0 }
     ],
-    mapTop: 48,
-    mapLeft: 38
+    mapTop: 18.0,
+    mapLeft: 25.9,
+    hideOnMap: false
+
   },
 
   n10: {
@@ -133,11 +153,13 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n9", yaw: -120, pitch: 0 },
-      { id: "n11", yaw: 20, pitch: 0 }
+      { id: "n9", yaw: -4, pitch: 0, viewYaw: -100, viewPitch: 0 },
+      { id: "n21", yaw: 180, pitch: -5, viewYaw: -2, viewPitch: 10 }
     ],
-    mapTop: 49,
-    mapLeft: 39
+    mapTop: 31.6,
+    mapLeft: 25.2,
+    hideOnMap: false
+
   },
 
   n11: {
@@ -147,11 +169,12 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n10", yaw: -120, pitch: 0 },
-      { id: "n12", yaw: 20, pitch: 0 }
+
     ],
     mapTop: 50,
-    mapLeft: 40
+    mapLeft: 40,
+    hideOnMap: true
+
   },
 
   n12: {
@@ -161,11 +184,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n11", yaw: -120, pitch: 0 },
-      { id: "n13", yaw: 20, pitch: 0 }
+      { id: "n13", yaw: 180, pitch: -4, viewYaw: 180, viewPitch: 0 },
+      { id: "n21", yaw: 90, pitch: -4, viewYaw: 180, viewPitch: 0 },
+      { id: "n24", yaw: 0.4, pitch: 0.9, viewYaw: 130, viewPitch: 0 }
     ],
-    mapTop: 51,
-    mapLeft: 41
+    mapTop: 60.2,
+    mapLeft: 25.4,
+    hideOnMap: false
+
   },
 
   n13: {
@@ -175,11 +201,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n12", yaw: -120, pitch: 0 },
-      { id: "n14", yaw: 20, pitch: 0 }
+      { id: "n12", yaw: -6, pitch: 3 },
+      { id: "n14", yaw: 176, pitch: -4, viewYaw: 180, viewPitch: 0 },
+      { id: "n18", yaw: 84, pitch: 0 }
     ],
-    mapTop: 52,
-    mapLeft: 42
+    mapTop: 61.1,
+    mapLeft: 50.7,
+    hideOnMap: false
+
   },
 
   n14: {
@@ -189,11 +218,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n13", yaw: -120, pitch: 0 },
-      { id: "n15", yaw: 20, pitch: 0 }
+      { id: "n13", yaw: -4, pitch: 3 },
+      { id: "n15", yaw: -90, pitch: 0, viewYaw: -180, viewPitch: 0 },
+      { id: "n16", yaw: 180, pitch: -4, viewYaw: -90, viewPitch: 0 }
     ],
-    mapTop: 53,
-    mapLeft: 43
+    mapTop: 61.4,
+    mapLeft: 58.1,
+    hideOnMap: false
+
   },
 
   n15: {
@@ -203,11 +235,12 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n14", yaw: -120, pitch: 0 },
-      { id: "n16", yaw: 20, pitch: 0 }
+      { id: "n14", yaw: -2, pitch: 5, viewYaw: 88, viewPitch: 0 }
     ],
-    mapTop: 54,
-    mapLeft: 44
+    mapTop: 78.2,
+    mapLeft: 59.6,
+    hideOnMap: false
+
   },
 
   n16: {
@@ -217,11 +250,13 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n15", yaw: -120, pitch: 0 },
-      { id: "n17", yaw: 20, pitch: 0 }
+      { id: "n17", yaw: 173, pitch: -3, viewYaw: 180, viewPitch: 0 },
+      { id: "n14", yaw: 82, pitch: -5 }
     ],
-    mapTop: 55,
-    mapLeft: 45
+    mapTop: 60.2,
+    mapLeft: 70.7,
+    hideOnMap: false
+
   },
 
   n17: {
@@ -231,11 +266,13 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n16", yaw: -120, pitch: 0 },
-      { id: "n18", yaw: 20, pitch: 0 }
+      { id: "n16", yaw: -11, pitch: 4, viewYaw: 0, viewPitch: 0 },
+      { id: "n4", yaw: 175, pitch: -5, viewYaw: -90, viewPitch: 4 }
     ],
-    mapTop: 56,
-    mapLeft: 46
+    mapTop: 37.8,
+    mapLeft: 71.1,
+    hideOnMap: false
+
   },
 
   n18: {
@@ -245,11 +282,14 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n17", yaw: -120, pitch: 0 },
-      { id: "n19", yaw: 20, pitch: 0 }
+      { id: "n19", yaw: -8, pitch: 2 },
+      { id: "n13", yaw: 175, pitch: -3, viewYaw: -90, viewPitch: 0 },
+      { id: "n7", yaw: -8, pitch: 2, viewYaw: -97, viewPitch: 6 }
     ],
-    mapTop: 57,
-    mapLeft: 47
+    mapTop: 42.8,
+    mapLeft: 50.7,
+    hideOnMap: false
+
   },
 
   n19: {
@@ -259,11 +299,12 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n18", yaw: -120, pitch: 0 },
-      { id: "n20", yaw: 20, pitch: 0 }
+      { id: "n18", yaw: -8, pitch: 2 }
     ],
     mapTop: 58,
-    mapLeft: 48
+    mapLeft: 48,
+    hideOnMap: true
+
   },
 
   n20: {
@@ -273,80 +314,76 @@ window.NODES = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n19", yaw: -120, pitch: 0 },
-      { id: "n21", yaw: 20, pitch: 0 }
+      { id: "n24", yaw: -100, pitch: -25, viewYaw: 40, viewPitch: 2 }
     ],
-    mapTop: 59,
-    mapLeft: 49
+    mapTop: 57.5,
+    mapLeft: 12.2,
+    hideOnMap: false
+
   },
 
   n21: {
-    image: "SL0_123.jpg",
+    image: "SL0_124.jpg",
     label: "Image 21",
     description: "",
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n20", yaw: -120, pitch: 0 },
-      { id: "n22", yaw: 20, pitch: 0 }
+      { id: "n10", yaw: 180, pitch: -2 },
+      { id: "n12", yaw: -2, pitch: 3, viewYaw: -90, viewPitch: 4 },
+      { id: "n23", yaw: -78, pitch: 2, viewYaw: -40, viewPitch: -2 }
     ],
-    mapTop: 60,
-    mapLeft: 50
+    mapTop: 44.5,
+    mapLeft: 25.2,
+    hideOnMap: false
+
   },
 
   n22: {
-    image: "SL0_124.jpg",
+    image: "SL0_125.jpg",
     label: "Image 22",
     description: "",
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n21", yaw: -120, pitch: 0 },
-      { id: "n23", yaw: 20, pitch: 0 }
+      { id: "n23", yaw: -58, pitch: -7, viewYaw: 143, viewPitch: 9 }
     ],
-    mapTop: 61,
-    mapLeft: 51
+    mapTop: 39.5,
+    mapLeft: 32.8,
+    hideOnMap: false
+
   },
 
   n23: {
-    image: "SL0_125.jpg",
+    image: "SL0_126.jpg",
     label: "Image 23",
     description: "",
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n22", yaw: -120, pitch: 0 },
-      { id: "n24", yaw: 20, pitch: 0 }
+      { id: "n22", yaw: -43, pitch: 2, viewYaw: 90, viewPitch: 5 },
+      { id: "n21", yaw: 106, pitch: -3 }
     ],
-    mapTop: 62,
-    mapLeft: 52
+    mapTop: 39.2,
+    mapLeft: 30.2,
+    hideOnMap: false
+
   },
 
   n24: {
-    image: "SL0_126.jpg",
+    image: "SL0_127.jpg",
     label: "Image 24",
     description: "",
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "n23", yaw: -120, pitch: 0 },
-      { id: "n25", yaw: 20, pitch: 0 }
+      { id: "n12", yaw: -51, pitch: -2, viewYaw: 180, viewPitch: 0 },
+      { id: "n20", yaw: -156, pitch: -27, viewYaw: 180, viewPitch: 0 }
     ],
-    mapTop: 63,
-    mapLeft: 53
-  },
+    mapTop: 60.8,
+    mapLeft: 12.6,
+    hideOnMap: false
 
-  n25: {
-    image: "SL0_127.jpg",
-    label: "Image 25",
-    description: "",
-    defaultYaw: 0,
-    defaultPitch: 0,
-    neighbors: [
-      { id: "n24", yaw: -120, pitch: 0 }
-    ],
-    mapTop: 64,
-    mapLeft: 54
   }
 
 };
