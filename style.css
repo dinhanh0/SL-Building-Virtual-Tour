@@ -74,8 +74,8 @@ html, body {
 
 #onscreen-dev {
   position: fixed;
-  bottom: 12px;
-  right: 12px;
+  top: 90px;     /* ⬅️ this moves it down so it clears the top debug */  right: 12px;
+  bottom: 8;       /* ⬅️ make sure bottom isn't also set */
   width: 230px;
   background: rgba(0,0,0,0.75);
   color: white;

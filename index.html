@@ -17,7 +17,7 @@
 <body>
   <div id="container">
 
-    <!-- === ON-SCREEN DEV PANEL (overlay) === -->
+    <!-- Dev overlay for grabbing yaw/pitch, extra links, etc. -->
     <div id="onscreen-dev">
       <div class="dev-title">Dev Panel</div>
 
@@ -26,20 +26,15 @@
         <div id="dev-view">Yaw: 0 | Pitch: 0</div>
       </div>
 
-      <!-- DEFAULT_ORIENTATIONS -->
       <button id="dev-btn-default">Save DEFAULT_ORIENTATION</button>
 
       <div class="dev-section">
         <label>Neighbor:</label>
         <select id="dev-neighbor-select"></select>
 
-        <!-- EDGE_VIEW_ORIENTATIONS -->
         <button id="dev-btn-edge">Save EDGE_VIEW</button>
-
-        <!-- NEIGHBOR_YAWS -->
         <button id="dev-btn-icon">Save ICON_YAW</button>
 
-        <!-- EXTRA_LINKS -->
         <div class="dev-row">
           <label for="dev-extra-dir" style="color:#ccc;font-size:11px;">Dir:</label>
           <select id="dev-extra-dir">
@@ -52,7 +47,6 @@
         <button id="dev-btn-extra">Save EXTRA_LINK</button>
       </div>
 
-      <!-- MAP_POSITIONS -->
       <button id="dev-btn-map">Save MAP_POSITION (mapTop/mapLeft)</button>
 
       <div class="dev-output">
@@ -60,26 +54,24 @@
       </div>
     </div>
 
-    <!-- Main viewer (Street View style) -->
+    <!-- Main pano viewer -->
     <div id="viewer-panel">
-      <!-- Title pill (top-left) -->
       <div id="viewer-header">
         <h1 id="location-title">Select a location on the map</h1>
       </div>
 
-      <!-- 360 pano -->
       <div id="viewer">
         <div id="panorama"></div>
         <div id="pano-transition"></div>
       </div>
 
-      <!-- Info + neighbor nav (bottom center) -->
+      <!-- Description + neighbor buttons -->
       <div id="viewer-info">
         <p id="location-description"></p>
         <div id="neighbor-buttons"></div>
       </div>
 
-      <!-- Right-side controls: compass + floor selector -->
+      <!-- Compass + floor buttons on the right -->
       <div id="controls-right">
         <div id="compass-widget">
           <div class="compass-ring"></div>
@@ -89,22 +81,31 @@
 
         <div id="floor-selector">
           <button class="floor-btn active" data-floor="0">0</button>
-          <!-- future floors:
           <button class="floor-btn" data-floor="1">1</button>
-          -->
+          <button class="floor-btn" data-floor="2">2</button>
+          <button class="floor-btn" data-floor="3">3</button>
         </div>
       </div>
     </div>
 
-    <!-- Floating minimap (bottom-left) -->
+    <!-- Minimap in the corner -->
     <div id="map-panel">
+      <!-- gets swapped in JS when floor changes -->
       <img id="map-image" src="floorplan(edited)/floor0.png" alt="Floor Map" />
       <!-- map-spot buttons are injected by script.js -->
     </div>
   </div>
 
-  <script src="nodes.js"></script>
+  <!-- Floor graph data -->
+  <script src="nodes_floor0.js"></script>
+  <script src="nodes_floor1.js"></script>
+  <script src="nodes_floor2.js"></script>
+  <script src="nodes_floor3.js"></script>
+  
+
+  <!-- App logic -->
   <script src="script.js"></script>
+
   <div id="debug-orient"></div>
 </body>
 </html>
