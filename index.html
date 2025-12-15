@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Purdue Indoor Virtual Tour</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 
   <!-- Pannellum 360 viewer -->
   <link
@@ -15,9 +15,24 @@
 </head>
 
 <body>
-  <div id="container">
+  <header id="site-header">
+    <h1>Purdue SL Building Virtual Tour</h1>
+    <p class="subtitle">
+      Explore the basement and upper floors with 360° images and an interactive minimap.
+    </p>
+  </header>
 
-    <!-- Dev overlay for grabbing yaw/pitch, extra links, etc. -->
+  <section id="instructions">
+    <h2>How to Use</h2>
+    <ul>
+      <li>Click dots on the minimap to jump between locations.</li>
+      <li>Use the floor buttons (0, 1, 2, 3) to switch between floors.</li>
+      <li>Click the compass to re-center the view.</li>
+    </ul>
+  </section>
+
+  <div id="container">
+    <!-- Dev overlay -->
     <div id="onscreen-dev">
       <div class="dev-title">Dev Panel</div>
 
@@ -65,13 +80,11 @@
         <div id="pano-transition"></div>
       </div>
 
-      <!-- Description + neighbor buttons -->
       <div id="viewer-info">
         <p id="location-description"></p>
         <div id="neighbor-buttons"></div>
       </div>
 
-      <!-- Compass + floor buttons on the right -->
       <div id="controls-right">
         <div id="compass-widget">
           <div class="compass-ring"></div>
@@ -88,11 +101,9 @@
       </div>
     </div>
 
-    <!-- Minimap in the corner -->
+    <!-- Minimap -->
     <div id="map-panel">
-      <!-- gets swapped in JS when floor changes -->
       <img id="map-image" src="floorplan(edited)/floor0.png" alt="Floor Map" />
-      <!-- map-spot buttons are injected by script.js -->
     </div>
   </div>
 
@@ -101,11 +112,14 @@
   <script src="nodes_floor1.js"></script>
   <script src="nodes_floor2.js"></script>
   <script src="nodes_floor3.js"></script>
-  
 
   <!-- App logic -->
   <script src="script.js"></script>
 
   <div id="debug-orient"></div>
+
+  <footer id="site-footer">
+    <p>CSCI 435 – 3D Map Project • Created by Anh Dinh</p>
+  </footer>
 </body>
 </html>

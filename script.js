@@ -1,7 +1,7 @@
 // 1. CONSTANTS
 const STORAGE_KEY_CURRENT_NODE  = "tourCurrentNode";
 const STORAGE_KEY_CURRENT_FLOOR = "tourCurrentFloor";
-const DEV_MODE = true;   // turn false to hide dev overlay
+const DEV_MODE = false;   // turn false to hide dev overlay
 
 // Where the pano images live per floor
 const FLOOR_PATHS = {
