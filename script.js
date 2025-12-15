@@ -1,7 +1,7 @@
 // 1. CONSTANTS
 const STORAGE_KEY_CURRENT_NODE  = "tourCurrentNode";
 const STORAGE_KEY_CURRENT_FLOOR = "tourCurrentFloor";
-const DEV_MODE = false;   // turn false to hide dev overlay
+const DEV_MODE = true;   // turn false to hide dev overlay
 
 // Where the pano images live per floor
 const FLOOR_PATHS = {
@@ -536,3 +536,50 @@ function updateDevPanel() {
     }
   }
 }
+// ===================== DEV + DEBUG OVERLAY TOGGLE (Y) =====================
+
+// both overlays hidden by default
+let overlaysVisible = false;
+
+function setOverlaysVisible(visible) {
+  const debugOrient = document.getElementById("debug-orient");
+  const devPanel    = document.getElementById("onscreen-dev");
+
+  const display = visible ? "block" : "none";
+  if (debugOrient) debugOrient.style.display = display;
+  if (devPanel)    devPanel.style.display    = display;
+}
+
+// initialize on page load
+window.addEventListener("load", () => {
+  setOverlaysVisible(overlaysVisible);
+});
+
+// press Y to toggle BOTH overlays together
+document.addEventListener("keydown", (e) => {
+  // ignore typing in inputs / textareas
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+
+  if (e.key === "y" || e.key === "Y") {
+    overlaysVisible = !overlaysVisible;
+    setOverlaysVisible(overlaysVisible);
+  }
+});
+
+
+
+// Top panel toggle (header + instructions together)
+const topPanel = document.getElementById("top-panel");
+const topToggle = document.getElementById("top-panel-toggle");
+
+function toggleTopPanel() {
+  topPanel.classList.toggle("collapsed");
+  topToggle.title = topPanel.classList.contains("collapsed") ? "Show info" : "Hide info";
+}
+
+topToggle?.addEventListener("click", toggleTopPanel);
+
+// Optional: clicking anywhere on the top panel also closes it
+topPanel?.addEventListener("click", toggleTopPanel);
+
+

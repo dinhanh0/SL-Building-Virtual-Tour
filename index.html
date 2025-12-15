@@ -15,21 +15,31 @@
 </head>
 
 <body>
-  <header id="site-header">
-    <h1>Purdue SL Building Virtual Tour</h1>
-    <p class="subtitle">
-      Explore the basement and upper floors with 360° images and an interactive minimap.
-    </p>
-  </header>
+  <!-- ===== TOP INFO PANEL (collapsible) ===== -->
+  <div id="top-panel" class="collapsed">
 
-  <section id="instructions">
-    <h2>How to Use</h2>
-    <ul>
-      <li>Click dots on the minimap to jump between locations.</li>
-      <li>Use the floor buttons (0, 1, 2, 3) to switch between floors.</li>
-      <li>Click the compass to re-center the view.</li>
-    </ul>
-  </section>
+    <header id="site-header">
+      <h1>Purdue SL Building Virtual Tour</h1>
+      <p class="subtitle">
+        Explore the basement and upper floors with 360° images and an interactive minimap.
+      </p>
+    </header>
+
+    <section id="instructions">
+      <h2>How to Use</h2>
+      <ul>
+        <li>Click dots on the minimap to jump between locations.</li>
+        <li>Use the floor buttons (0, 1, 2, 3) to switch between floors.</li>
+        <li>Click the compass to re-center the view.</li>
+        <li>Dev Only: Press 'y' to see dev tools.</li>
+
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- Toggle button (always visible) -->
+  <button id="top-panel-toggle" title="Show info">ⓘ</button>
 
   <div id="container">
     <!-- Dev overlay -->
@@ -118,8 +128,21 @@
 
   <div id="debug-orient"></div>
 
-  <footer id="site-footer">
-    <p>CSCI 435 – 3D Map Project • Created by Anh Dinh</p>
-  </footer>
+ <footer id="site-footer">
+  <p>CSCI 435 – Science Building Virtual Tour - Created by Anh Dinh</p>
+  <p>
+    <a href="https://github.com/dinhanh0/SL-Building-Virtual-Tour" target="_blank" rel="noreferrer"
+       style="color: green;">
+       GitHub Repo:
+
+    </a>
+
+    <a href=" https://dinhanh0.github.io/SL-Building-Virtual-Tour/" target="_blank" rel="noreferrer"
+       style="color: rgb(27, 86, 223);">
+       Website Link
+
+    </a>
+  </p>
+</footer>
 </body>
 </html>

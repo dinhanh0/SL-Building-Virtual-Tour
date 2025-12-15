@@ -284,7 +284,8 @@ window.NODES_F1 = {
     defaultPitch: 0,
     neighbors: [
       { id: "SL1_069", yaw: -120, pitch: 0 },
-      { id: "SL1_131", yaw: 69.7, pitch: -1.5, viewYaw: 180, viewPitch: 0 }
+      { id: "SL1_131", yaw: 69.7, pitch: -1.5, viewYaw: 180, viewPitch: 0 },
+      { id: "SL1_126", yaw: 170, pitch: -2, viewYaw: -90, viewPitch: 0 }
     ],
     mapTop: 80.5,
     mapLeft: 60.0,
@@ -555,7 +556,8 @@ window.NODES_F1 = {
     defaultYaw: 0,
     defaultPitch: 0,
     neighbors: [
-      { id: "SL1_124", yaw: -7.4, pitch: -0.6 }
+      { id: "SL1_124", yaw: -7.4, pitch: -0.6 },
+      { id: "SL1_070", yaw: 90, pitch: 0 }
     ],
     mapTop: 76,
     mapLeft: 66,
