@@ -92,7 +92,7 @@ body {
   cursor: pointer;
 }
 
-/* ================= VIEWER PANEL ================= */
+/* VIEWER PANEL */
 
 #viewer-panel {
   position: relative;
@@ -134,7 +134,7 @@ body {
   transform: scale(1);
 }
 
-/* ================= DEV PANEL ================= */
+/*  DEV PANEL */
 
 #onscreen-dev {
   position: fixed;
@@ -192,7 +192,7 @@ body {
   padding: 5px;
 }
 
-/* ================= TITLE PILL ================= */
+/*  TITLE PILL  */
 
 #viewer-header {
   position: absolute;
@@ -212,7 +212,7 @@ body {
   font-weight: 500;
 }
 
-/* ================= BOTTOM NAV BAR ================= */
+/*  BOTTOM NAV BAR  */
 
 #viewer-info {
   position: absolute;
@@ -266,7 +266,7 @@ body {
   transform: translateY(0);
 }
 
-/* ================= MINIMAP ================= */
+/*  MINIMAP  */
 
 #map-panel {
   position: absolute;
@@ -335,7 +335,7 @@ body {
   box-shadow: 0 0 0 4px rgba(52, 168, 83, 0.45);
 }
 
-/* ================= RIGHT CONTROLS ================= */
+/*  RIGHT CONTROLS  */
 
 #controls-right {
   position: absolute;
@@ -432,7 +432,7 @@ body {
   color: white;
 }
 
-/* ================= PANNELLUM CONTROLS ================= */
+/*  PANNELLUM CONTROLS  */
 
 .pnlm-controls {
   position: absolute !important;
@@ -486,7 +486,7 @@ body {
   display: none;
 }
 
-/* ================= RESPONSIVE ================= */
+/*  RESPONSIVE  */
 
 @media (max-width: 768px) {
   #viewer-info {
