@@ -203,7 +203,6 @@ function goToNode(id, overrideYaw, overridePitch) {
         pitch: neighbor.pitch ?? 0,
         yaw:   neighbor.yaw   ?? 0,
         type:  "info",
-        text:  "Go to: " + neighborId,
         clickHandlerFunc: () =>
           goToNode(
             neighborId,
