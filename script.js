@@ -542,12 +542,18 @@ function updateDevPanel() {
 let overlaysVisible = false;
 
 function setOverlaysVisible(visible) {
-  const debugOrient = document.getElementById("debug-orient");
-  const devPanel    = document.getElementById("onscreen-dev");
+  const els = [
+    document.getElementById("debug-orient"),   // top-right yaw/pitch debug
+    document.getElementById("onscreen-dev"),   // dev panel
+    document.getElementById("viewer-info"),    // bottom Go to buttons bar
+    document.getElementById("viewer-header"),  // top-left node label pill
+  ];
 
   const display = visible ? "block" : "none";
-  if (debugOrient) debugOrient.style.display = display;
-  if (devPanel)    devPanel.style.display    = display;
+  els.forEach(el => {
+    if (!el) return;
+    el.style.display = display;
+  });
 }
 
 // initialize on page load
