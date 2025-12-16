@@ -525,8 +525,8 @@ body {
 
 /* Toggle button (top-left floating) */
 #top-panel-toggle { 
-  top: 62px;
-  position: fixed;
+  top: 10px;
+  position: static;
   left: 10px;
   z-index: 10000;
   background: rgba(176, 176, 176, 0.95);
