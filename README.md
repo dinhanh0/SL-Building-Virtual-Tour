@@ -1,4 +1,3 @@
-```md
 # SL Building Virtual Tour
 
 A browser-based indoor navigation experience for the Purdue Science Building that combines **360° panoramas**, **graph based scene navigation**, and a **minimap** to help users explore the building virtually.
