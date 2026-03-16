@@ -1,8 +1,11 @@
+```md
 # SL Building Virtual Tour
 
-Final project for course CSCI 435 Multimedia Information Systems
-An interactive indoor virtual tour of the Purdue Science Building 
-This project lets users explore the building through **360° panorama scenes**, switch between floors, use a **minimap**, and navigate between connected locations through hotspots and buttons.
+A browser-based indoor navigation experience for the Purdue Science Building that combines **360° panoramas**, **graph based scene navigation**, and a **minimap** to help users explore the building virtually.
+
+Built with HTML, CSS, JavaScript, and Python, the project organizes panorama scenes as connected nodes across multiple floors and generates reusable floor datasets for scalable tour maintenance.
+
+This was a final project for course CSCI 435 Multimedia Information Systems
 
 ## Features
 
