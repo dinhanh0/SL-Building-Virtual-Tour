@@ -1,5 +1,7 @@
 # SL Building Virtual Tour
 
+Demo Site: https://dinhanh0.github.io/SL-Building-Virtual-Tour/
+
 A browser-based indoor navigation experience for the Purdue Science Building that combines **360° panoramas**, **graph based scene navigation**, and a **minimap** to help users explore the building virtually.
 
 Built with HTML, CSS, JavaScript, and Python, the project organizes panorama scenes as connected nodes across multiple floors and generates reusable floor datasets for scalable tour maintenance.
